@@ -1,0 +1,618 @@
+<html data-type="html" data-identifier="f157f4fd-8245-431d-9861-2831e0729525" data-title="秦华辰 Portfolio Website" data-version="2" width="1200" height="4200"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #FAF8F5;
+            --bg-warm: #F5F0EB;
+            --surface: #FFFFFF;
+            --surface2: #F0EDE8;
+            --accent: #8B7355;
+            --accent-light: #C4B49A;
+            --accent-dark: #5C4A32;
+            --text: #2C2C2C;
+            --text-light: #6B6B6B;
+            --text-muted: #9A9A9A;
+            --border: rgba(139,115,85,.12);
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 56px;
+            background: rgba(250,248,245,.88);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+            font-weight: 600; font-size: 18px; color: var(--text);
+            letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a {
+            color: var(--text-light); text-decoration: none; font-size: 13px;
+            font-weight: 500; letter-spacing: .5px; transition: color .3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+            height: 1px; background: var(--accent); transform: scaleX(0);
+            transition: transform .3s; transform-origin: center;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 140px 56px 80px; position: relative;
+        }
+        .hero-inner {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: center; width: 100%;
+        }
+        .hero-left {}
+        .hero-name-en {
+            font-family: 'Playfair Display', serif;
+            font-size: 13px; font-weight: 400; color: var(--text-muted);
+            letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px;
+        }
+        .hero h1 {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+            font-size: 52px; font-weight: 700; line-height: 1.2;
+            margin-bottom: 24px; color: var(--text);
+        }
+        .hero h1 .accent {
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-style: italic; font-weight: 500;
+        }
+        .hero-desc {
+            font-size: 15px; color: var(--text-light); line-height: 1.9;
+            margin-bottom: 36px; max-width: 440px;
+        }
+        .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero-tag {
+            padding: 8px 18px; border-radius: 50px; font-size: 12px;
+            font-weight: 500; border: 1px solid var(--border);
+            color: var(--text-light); background: var(--surface);
+            letter-spacing: .5px;
+        }
+        .hero-cta {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 36px; border-radius: 50px; border: none;
+            background: var(--accent); color: #fff; font-weight: 600;
+            font-size: 13px; cursor: pointer; letter-spacing: .5px;
+            transition: all .3s;
+        }
+        .hero-cta:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,115,85,.2); }
+
+        .hero-right {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .hero-card {
+            background: var(--surface); border-radius: var(--radius);
+            padding: 28px 24px; border: 1px solid var(--border);
+            transition: transform .3s;
+        }
+        .hero-card:hover { transform: translateY(-4px); }
+        .hero-card:nth-child(2) { transform: translateY(24px); }
+        .hero-card:nth-child(2):hover { transform: translateY(20px); }
+        .hero-card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px; font-weight: 600; color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .hero-card-label {
+            font-size: 12px; color: var(--text-muted); letter-spacing: .5px;
+        }
+
+        /* ===== BRAND BAR ===== */
+        .brand-bar {
+            padding: 48px 56px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .brand-bar-label {
+            font-size: 11px; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 3px; margin-bottom: 24px; text-align: center;
+        }
+        .brand-logos {
+            display: flex; justify-content: center; align-items: center;
+            gap: 56px; flex-wrap: wrap;
+        }
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px; font-weight: 500; color: var(--accent-light);
+            letter-spacing: 2px; opacity: .7; transition: opacity .3s;
+        }
+        .brand-logo:hover { opacity: 1; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 96px 56px; }
+        .section-tag {
+            font-size: 11px; color: var(--accent); text-transform: uppercase;
+            letter-spacing: 4px; font-weight: 600; margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+            font-size: 32px; font-weight: 600; margin-bottom: 12px;
+        }
+        .section-subtitle {
+            font-size: 14px; color: var(--text-muted); margin-bottom: 48px;
+        }
+
+        /* ===== CATEGORY FILTER ===== */
+        .filter-bar {
+            display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 22px; border-radius: 50px; border: 1px solid var(--border);
+            background: transparent; color: var(--text-light); font-size: 13px;
+            font-weight: 500; cursor: pointer; transition: all .3s;
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent); color: #fff; border-color: var(--accent);
+        }
+
+        /* ===== PROJECT GRID ===== */
+        .project-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .project-card {
+            background: var(--surface); border-radius: var(--radius);
+            overflow: hidden; border: 1px solid var(--border);
+            transition: transform .4s, box-shadow .4s; cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(139,115,85,.1);
+        }
+        .project-card.featured {
+            grid-column: span 2; grid-row: span 1;
+        }
+        .project-thumb {
+            width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;
+        }
+        .project-card.featured .project-thumb { aspect-ratio: 2/1; }
+        .project-info { padding: 24px; }
+        .project-cat {
+            font-size: 11px; color: var(--accent); text-transform: uppercase;
+            letter-spacing: 2px; font-weight: 600; margin-bottom: 8px;
+        }
+        .project-info h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px; font-weight: 600; margin-bottom: 8px;
+        }
+        .project-info p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .project-tags-row { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+        .ptag {
+            padding: 4px 12px; border-radius: 50px; font-size: 11px; font-weight: 500;
+            background: var(--bg-warm); color: var(--text-light);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+            align-items: start;
+        }
+        .about-text { font-size: 15px; color: var(--text-light); line-height: 2; }
+        .about-text p { margin-bottom: 16px; }
+        .skills-list { display: flex; flex-direction: column; gap: 20px; }
+        .skill-item { }
+        .skill-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .skill-name { font-size: 13px; font-weight: 600; }
+        .skill-pct { font-size: 12px; color: var(--accent); font-weight: 500; }
+        .skill-track {
+            height: 3px; background: var(--surface2); border-radius: 3px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%; border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transition: width 1s ease;
+        }
+
+        /* ===== EXPERIENCE ===== */
+        .exp-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+        }
+        .exp-card {
+            background: var(--surface); border-radius: var(--radius);
+            padding: 32px; border: 1px solid var(--border);
+            transition: transform .3s;
+        }
+        .exp-card:hover { transform: translateY(-4px); }
+        .exp-icon { font-size: 28px; margin-bottom: 16px; }
+        .exp-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 16px; font-weight: 600; margin-bottom: 6px;
+        }
+        .exp-card h4 { font-size: 13px; color: var(--accent); margin-bottom: 12px; font-weight: 500; }
+        .exp-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            background: var(--surface); border-radius: 20px;
+            padding: 72px; text-align: center; margin: 0 56px 80px;
+            border: 1px solid var(--border); position: relative; overflow: hidden;
+        }
+        .contact-section::before {
+            content: ''; position: absolute; top: -120px; left: 50%;
+            transform: translateX(-50%); width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139,115,85,.04), transparent 70%);
+        }
+        .contact-section h2 {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+            font-size: 32px; font-weight: 600; margin-bottom: 12px;
+            position: relative;
+        }
+        .contact-section p {
+            color: var(--text-muted); font-size: 15px; margin-bottom: 36px;
+            position: relative;
+        }
+        .contact-links {
+            display: flex; justify-content: center; gap: 12px;
+            flex-wrap: wrap; position: relative;
+        }
+        .contact-pill {
+            display: flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: 50px;
+            background: var(--bg); border: 1px solid var(--border);
+            color: var(--text); font-size: 13px; font-weight: 500;
+            text-decoration: none; transition: all .3s;
+        }
+        .contact-pill:hover {
+            border-color: var(--accent); background: var(--accent);
+            color: #fff; transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center; padding: 36px 56px;
+            font-size: 12px; color: var(--text-muted);
+            border-top: 1px solid var(--border); letter-spacing: .5px;
+        }
+
+        /* ===== DECORATIVE LINE ===== */
+        .divider {
+            width: 40px; height: 1px; background: var(--accent-light);
+            margin: 0 auto 48px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">秦华辰</div>
+        <ul class="nav-links">
+            <li><a href="#work">作品</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#experience">经历</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-name-en">Huachen Qin — Portfolio</div>
+                <h1 id="hero-title">
+                    创意策略<br><span class="accent">&amp; Brand Storyteller</span>
+                </h1>
+                <p id="hero-desc" class="hero-desc">
+                    专注于美妆、汽车科技与轻奢品牌的创意营销。从产品文案到品牌全案，用策略思维与感性表达，为品牌构建有温度的叙事。
+                </p>
+                <div class="hero-tags">
+                    <span class="hero-tag">品牌策划</span>
+                    <span class="hero-tag">产品文案</span>
+                    <span class="hero-tag">IMC 整合营销</span>
+                    <span class="hero-tag">事件营销</span>
+                </div>
+                <button class="hero-cta" id="hero-cta-btn">查看作品 →</button>
+            </div>
+            <div class="hero-right">
+                <div class="hero-card">
+                    <div class="hero-card-num">5+</div>
+                    <div class="hero-card-label">合作品牌</div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-num">3</div>
+                    <div class="hero-card-label">核心领域</div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-num">中英</div>
+                    <div class="hero-card-label">双语文案</div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-num">全案</div>
+                    <div class="hero-card-label">策略到执行</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND BAR -->
+    <div class="brand-bar">
+        <div class="brand-bar-label">合作品牌</div>
+        <div class="brand-logos">
+            <span class="brand-logo">L'ORÉAL</span>
+            <span class="brand-logo">KIEHL'S</span>
+            <span class="brand-logo">CHANDO</span>
+            <span class="brand-logo">LYNK &amp; CO</span>
+            <span class="brand-logo">SUNSHIFEN</span>
+        </div>
+    </div>
+
+    <!-- WORK -->
+    <section id="work">
+        <div class="section-tag">Selected Work</div>
+        <h2 id="work-title" class="section-title">精选作品</h2>
+        <p class="section-subtitle">涵盖产品文案、品牌策划、IMC 整合方案与事件营销</p>
+
+        <div class="filter-bar" id="filter-bar">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="copywriting">产品文案</button>
+            <button class="filter-btn" data-filter="branding">品牌策划全案</button>
+            <button class="filter-btn" data-filter="imc">IMC 方案</button>
+            <button class="filter-btn" data-filter="beauty">美妆</button>
+            <button class="filter-btn" data-filter="auto">汽车 &amp; 科技</button>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+
+            <!-- 1. 领克 08 事件营销 — featured -->
+            <div class="project-card featured fade-up" data-cats="auto,imc,branding">
+                <img class="project-thumb" data-src="A premium automotive showroom interior in warm cream and beige tones, a sleek dark SUV displayed on a polished concrete floor, warm pendant lighting overhead, minimal Scandinavian-inspired architecture with clean lines, large windows letting in soft golden hour light, a small elegant clock installation on the wall symbolizing time, professional commercial photography in a refined minimalist editorial style" alt="领克08">
+                <div class="project-info">
+                    <div class="project-cat">汽车 · 事件营销</div>
+                    <h3 id="p1-title">领克 08「时间商店」事件营销方案</h3>
+                    <p id="p1-desc">领克 08 上市发布会预热环节，利用线上资源与领克首家体验店结合打造体验店开放日，并发布领克 08 时间限量版 —— 「在有限的时间里，展开无限的体验」</p>
+                    <div class="project-tags-row">
+                        <span class="ptag">事件策划</span>
+                        <span class="ptag">线上线下联动</span>
+                        <span class="ptag">限量版发布</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. SUNSHIFEN 产品文案 -->
+            <div class="project-card fade-up" data-cats="copywriting">
+                <img class="project-thumb" data-src="An elegant flat-lay of delicate gold jewelry pieces on a soft beige linen fabric, featuring a snake bracelet with sparkling stones and tassel earrings, warm natural light casting soft shadows, a sprig of dried pampas grass nearby, cream and gold color palette, professional product photography in a refined minimalist editorial style" alt="SUNSHIFEN">
+                <div class="project-info">
+                    <div class="project-cat">产品文案 · 英文</div>
+                    <h3 id="p2-title">SUNSHIFEN 独立站产品文案</h3>
+                    <p id="p2-desc">为新加坡轻奢饰品品牌撰写 Ouroboros 系列、SOLAR 系列等全线英文产品文案，涵盖设计理念与风格阐释。</p>
+                    <div class="project-tags-row">
+                        <span class="ptag">英文文案</span>
+                        <span class="ptag">独立站</span>
+                        <span class="ptag">轻奢饰品</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 欧莱雅 -->
+            <div class="project-card fade-up" data-cats="beauty,branding">
+                <img class="project-thumb" data-src="A luxurious beauty product arrangement on a creamy marble surface, elegant skincare bottles with gold accents, soft rose petals scattered around, warm diffused lighting from the side, shallow depth of field, neutral beige and champagne tones, professional beauty photography in a refined minimalist editorial style" alt="欧莱雅">
+                <div class="project-info">
+                    <div class="project-cat">美妆 · 品牌策划</div>
+                    <h3 id="p3-title">欧莱雅品牌合作项目</h3>
+                    <p id="p3-desc">为欧莱雅品牌打造创意营销方案，将品牌高端定位与年轻化表达相融合。</p>
+                    <div class="project-tags-row">
+                        <span class="ptag">美妆</span>
+                        <span class="ptag">品牌策划</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 科颜氏 -->
+            <div class="project-card fade-up" data-cats="beauty,imc">
+                <img class="project-thumb" data-src="A clean skincare counter display with amber glass bottles and botanical ingredients like herbs and citrus slices arranged on a warm wood surface, soft natural window light, a beige textured wall in the background, earthy and organic feel, professional lifestyle photography in a refined minimalist editorial style" alt="科颜氏">
+                <div class="project-info">
+                    <div class="project-cat">美妆 · IMC</div>
+                    <h3 id="p4-title">科颜氏整合营销方案</h3>
+                    <p id="p4-desc">为科颜氏制定整合营销传播策略，从社交媒体到线下体验实现品牌心智全链路触达。</p>
+                    <div class="project-tags-row">
+                        <span class="ptag">IMC</span>
+                        <span class="ptag">社交传播</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 自然堂 -->
+            <div class="project-card fade-up" data-cats="beauty,copywriting">
+                <img class="project-thumb" data-src="A serene beauty scene with skincare products placed beside a clear mountain spring on smooth river stones, mist rising softly in the background, lush green leaves and water droplets, a sense of pure natural ingredients, warm soft light, cream and green palette, professional beauty photography in a refined minimalist editorial style" alt="自然堂">
+                <div class="project-info">
+                    <div class="project-cat">美妆 · 产品文案</div>
+                    <h3 id="p5-title">自然堂品牌合作项目</h3>
+                    <p id="p5-desc">结合品牌「自然之美」的核心理念，创作产品文案与传播内容，强化品牌在国货美妆赛道中的辨识度。</p>
+                    <div class="project-tags-row">
+                        <span class="ptag">国货美妆</span>
+                        <span class="ptag">产品文案</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. SOLAR 系列 -->
+            <div class="project-card fade-up" data-cats="copywriting">
+                <img class="project-thumb" data-src="Close-up of elegant pavé tassel earrings catching warm golden sunlight on a woman's ear, soft bokeh of a coastal sunrise in the background, gentle ocean colors blending with champagne gold tones, the jewelry sparkling with tiny crystals, professional jewelry photography in a refined minimalist editorial style" alt="SOLAR Collection">
+                <div class="project-info">
+                    <div class="project-cat">产品文案 · 英文</div>
+                    <h3 id="p6-title">SOLAR Collection 系列文案</h3>
+                    <p id="p6-desc">灵感源于海岸线日出的第一缕阳光 —— Pavé Tassel Earrings 与 Double-Row Pearl Necklace 的品牌叙事与产品描述。</p>
+                    <div class="project-tags-row">
+                        <span class="ptag">品牌叙事</span>
+                        <span class="ptag">英文撰写</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" style="background: var(--surface);">
+        <div class="about-grid">
+            <div>
+                <div class="section-tag">About Me</div>
+                <h2 id="about-title" class="section-title">关于我</h2>
+                <div class="about-text" style="margin-top:24px;">
+                    <p id="a1">我是秦华辰，一名专注于品牌创意与营销策略的从业者。擅长将策略洞察转化为动人的品牌叙事，在美妆、汽车科技与轻奢领域积累了丰富的项目经验。</p>
+                    <p id="a2">从中文到英文，从产品文案到整合营销全案，我相信好的品牌传播始于对人的理解，终于让人心动的表达。</p>
+                    <p id="a3">合作品牌包括欧莱雅、科颜氏、自然堂、领克汽车及新加坡轻奢饰品品牌 SUNSHIFEN 等。</p>
+                </div>
+            </div>
+            <div>
+                <div class="section-tag" style="margin-top: 36px;">Core Skills</div>
+                <div class="skills-list" style="margin-top: 24px;">
+                    <div class="skill-item">
+                        <div class="skill-top"><span class="skill-name">品牌策划全案</span><span class="skill-pct">95%</span></div>
+                        <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-top"><span class="skill-name">产品文案（中英双语）</span><span class="skill-pct">92%</span></div>
+                        <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-top"><span class="skill-name">IMC 整合营销传播</span><span class="skill-pct">90%</span></div>
+                        <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-top"><span class="skill-name">事件营销策划</span><span class="skill-pct">88%</span></div>
+                        <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-top"><span class="skill-name">社交媒体传播</span><span class="skill-pct">85%</span></div>
+                        <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-tag">Experience</div>
+        <h2 id="exp-title" class="section-title">服务领域</h2>
+        <p class="section-subtitle">从品牌洞察到落地执行的全链路创意服务</p>
+        <div class="exp-grid">
+            <div class="exp-card fade-up">
+                <div class="exp-icon">✍️</div>
+                <h3 id="e1">产品文案</h3>
+                <h4>中英双语</h4>
+                <p id="e1d">为品牌撰写兼具商业洞察与文学质感的产品描述，涵盖独立站、电商详情页及社交媒体内容。</p>
+            </div>
+            <div class="exp-card fade-up">
+                <div class="exp-icon">💎</div>
+                <h3 id="e2">品牌策划全案</h3>
+                <h4>策略 + 创意</h4>
+                <p id="e2d">从品牌定位、视觉体系到传播策略，为品牌构建完整的叙事系统与增长路径。</p>
+            </div>
+            <div class="exp-card fade-up">
+                <div class="exp-icon">🔗</div>
+                <h3 id="e3">IMC 整合方案</h3>
+                <h4>全渠道触达</h4>
+                <p id="e3d">整合线上线下资源，打通社交媒体、KOL、PR 与体验营销等多触点，实现品效合一。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="contact-section" id="contact">
+        <h2 id="contact-title">一起创造好故事</h2>
+        <p id="contact-desc">期待与你探讨下一个品牌项目 ✨</p>
+        <div class="contact-links">
+            <a href="#" class="contact-pill">📧 Email</a>
+            <a href="#" class="contact-pill">💼 LinkedIn</a>
+            <a href="#" class="contact-pill">📱 微信</a>
+            <a href="#" class="contact-pill">📂 下载简历</a>
+        </div>
+    </div>
+
+    <footer>
+        <p id="footer-text">© 2026 秦华辰 Huachen Qin · Crafted with intention</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-up
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Hero CTA scroll
+        document.getElementById('hero-cta-btn').addEventListener('click', function() {
+            document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Filter functionality
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        var projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+
+                var filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(function(card) {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        var cats = card.getAttribute('data-cats');
+                        if (cats && cats.indexOf(filter) !== -1) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body></html>
